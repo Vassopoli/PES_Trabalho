@@ -11,6 +11,9 @@ namespace Trabalho
         static void Main(string[] args)
         {
             // DECLARANDO VETORES
+
+            int x = 1;
+            Console.WriteLine(x);
         }
     }
 }
