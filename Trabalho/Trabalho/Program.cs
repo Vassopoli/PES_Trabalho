@@ -54,7 +54,7 @@ namespace Trabalho
                 {
                     case '1': IncluirProduto(ref cdProduto, ref nmProduto, ref cdFabricante, ref corProduto); break;
                     case '2': AlterarProduto(ref cdProduto, ref nmProduto, ref cdFabricante, ref corProduto); break;
-                    case '3': ExcluirProduto(cdProduto, nmProduto, cdFabricante, corProduto); break;
+                    case '3': ExcluirProduto(ref cdProduto, ref nmProduto, ref cdFabricante, ref corProduto); break;
                     case '4': MenuListagem(cdProduto, nmProduto, cdFabricante, corProduto); break;
                 }
             }
@@ -112,6 +112,7 @@ namespace Trabalho
             corProduto[13] = "ROXO";
             corProduto[14] = "CINZA";
         }
+
         static void IncluirProduto(ref string[] cdProduto, ref string[] nmProduto, ref string[] cdFabricante, ref string[] corProduto)
         {
             // Declando variáveis	
@@ -160,7 +161,7 @@ namespace Trabalho
                     // Exibe
                     Console.Write("Cód.: ", cdProduto[i], " | Fabric.: ", cdFabricante[i], " | Prod.: ", nmProduto[i], espaco, " | Cor: ", corProduto[i], "\n");
 
-                    // escreva("Codigo: ", cdProduto [i]," Código do Fabricante:  ",  cdFabricante [i], " ", nmProduto [i]," "," Cor: ", corProduto[i], "\n")
+                    // Console.Write("Codigo: ", cdProduto [i]," Código do Fabricante:  ",  cdFabricante [i], " ", nmProduto [i]," "," Cor: ", corProduto[i], "\n");
                     Console.Write("Foi incluido!\n-----------------------------------------------------------------\n");
                     Console.Write("Pressione Enter para retornar ao menu...");
 
@@ -170,294 +171,262 @@ namespace Trabalho
             }
         }
 
-        static void AlterarProduto(ref string [] cdProduto, ref string [] nmProduto, ref string [] cdFabricante, ref string [] corProduto)
+        static void AlterarProduto(ref string[] cdProduto, ref string[] nmProduto, ref string[] cdFabricante, ref string[] corProduto)
         {
             // Declarando variáveis
             int i, sn, sn2;
 
-            string codigo, nada, guardarCod, guardarNome, guardarCodFab, guardarCor, espaco;
-
+            string codigo, guardarCod, guardarNome, guardarCodFab, guardarCor, espaco;
 
             Console.WriteLine("Insira o Código do produto que deseja alterar: ");
             codigo = Console.ReadLine();
 
-            //codigo = tx.preencher_a_esquerda('0', 3, codigo)
+            codigo = tx.preencher_a_esquerda('0', 3, codigo);
             Console.Clear();
 
-
-        for(i = 0; i < 999; i++)
-		{
-                if(cdProduto[i] == codigo)
-
+            for (i = 0; i < 999; i++)
             {
+                if (cdProduto[i] == codigo)
+                {
                     // formata o que será exibido conforme o tamanho da palavra do produto
                     espaco = "";
 
-                para(inteiro c = tx.numero_caracteres(nmProduto[i]); c < 20; c++)
-				{
-                espaco = espaco + " ";
-
-                }
-
-            // Exibe
-            Console.WriteLine("O produto à seguir será alterado:\n");
-
-            Console.WriteLine("Cód.: ", cdProduto[i], " | Fabric.: ", cdFabricante[i], " | Prod.: ", nmProduto[i], espaco, " | Cor: ", corProduto[i]);
-
-            //variaveis que guardam o vetor inicial
-            guardarCod = cdProduto[i];
-
-            guardarNome = nmProduto[i];
-
-            guardarCodFab = cdFabricante[i];
-
-            guardarCor = corProduto[i];
-
-            //Confirmaão do usuário
-            Console.WriteLine("\n\nEste é o Produto que deseja alterar? 1.SIM  2.NÃO");
-
-            Console.WriteLine("\nOpção desejada: ");
-
-            sn = int.Parse(Console.ReadLine());
-
-            Console.Clear();
-
-                if(sn == 1)
-
-                {
-                Console.WriteLine("Insira o novo código do fabricante: ");
-
-                cdFabricante[i] = Console.ReadLine();
-
-                cdFabricante.ToUpper = cdFabricante[i];
-
-                Console.WriteLine("Digite nome do Produto: ");
-
-                nmProduto[i] = Console.ReadLine();
-
-                //nmProduto[i] = tx.caixa_alta(nmProduto[i])
-
-                Console.WriteLine("Insira a nova cor: ");
-
-                corProduto[i] = Console.ReadLine();
-
-                //corProduto[i] = tx.caixa_alta(corProduto[i])
-
-                //Exibe o Novo Produto
-                Console.WriteLine("\nCódigo: ", cdProduto[i]);
-
-                // formata o que será exibido conforme o tamanho da palavra do produto
-                espaco = "";
-
-                    for(int c = tx.numero_caracteres(guardarNome); c < 20; c++)
-					{
-                    espaco = espaco + " ";
-
+                    for (int c = tx.numero_caracteres(nmProduto[i]); c < 20; c++)
+                    {
+                        espaco = espaco + " ";
                     }
 
-                // Exibe
-                Console.WriteLine("\nAntes-->  Fabric.: ", guardarCodFab, " | Prod.: ", guardarNome, espaco, " | Cor: ", guardarCor);
+                    // Exibe
+                    Console.WriteLine("O produto à seguir será alterado:\n");
 
-                // formata o que será exibido conforme o tamanho da palavra do produto
-                espaco = "";
+                    Console.WriteLine("Cód.: ", cdProduto[i], " | Fabric.: ", cdFabricante[i], " | Prod.: ", nmProduto[i], espaco, " | Cor: ", corProduto[i]);
 
-                    for(inteiro c = tx.numero_caracteres(nmProduto[i]); c < 20; c++)
-					{
-                    espaco = espaco + " ";
+                    //variaveis que guardam o vetor inicial
+                    guardarCod = cdProduto[i];
 
-                    }
+                    guardarNome = nmProduto[i];
 
-                // Exibe
-                Console.WriteLine("\nDepois--> Fabric.: ", cdFabricante[i], " | Prod.: ", nmProduto[i], espaco, " | Cor: ", corProduto[i]);
+                    guardarCodFab = cdFabricante[i];
 
-                //Confirmação do Usuário
-                Console.WriteLine("\nConfirma a alteração? 1.SIM 2.NÃO ");
+                    guardarCor = corProduto[i];
 
-                Console.WriteLine("\nOpção desejada: ");
+                    //Confirmaão do usuário
+                    Console.WriteLine("\n\nEste é o Produto que deseja alterar? 1.SIM  2.NÃO");
 
-                sn2 = int.Parse(Console.ReadLine());
+                    Console.WriteLine("\nOpção desejada: ");
 
-                    if(sn2 == 1)
+                    sn = int.Parse(Console.ReadLine());
+
+                    Console.Clear();
+
+                    if (sn == 1)
 
                     {
-                    Console.WriteLine("Produto Alterado com Sucesso!\n-----------------------------------------------------------------\n");
+                        Console.WriteLine("Insira o novo código do fabricante: ");
 
-                    Console.WriteLine("Pressione Enter para retornar ao menu...");
+                        cdFabricante[i] = Console.ReadLine();
 
-                    Console.ReadKey();
+                        cdFabricante[i] = cdFabricante[i].ToUpper();
 
-                       
+                        Console.WriteLine("Digite nome do Produto: ");
 
-                    }
+                        nmProduto[i] = Console.ReadLine();
+
+                        //nmProduto[i] = tx.caixa_alta(nmProduto[i])
+
+                        Console.WriteLine("Insira a nova cor: ");
+
+                        corProduto[i] = Console.ReadLine();
+
+                        //corProduto[i] = tx.caixa_alta(corProduto[i])
+
+                        //Exibe o Novo Produto
+                        Console.WriteLine("\nCódigo: ", cdProduto[i]);
+
+                        // formata o que será exibido conforme o tamanho da palavra do produto
+                        espaco = "";
+
+                        for (int c = tx.numero_caracteres(guardarNome); c < 20; c++)
+                        {
+                            espaco = espaco + " ";
+
+                        }
+
+                        // Exibe
+                        Console.WriteLine("\nAntes-->  Fabric.: ", guardarCodFab, " | Prod.: ", guardarNome, espaco, " | Cor: ", guardarCor);
+
+                        // formata o que será exibido conforme o tamanho da palavra do produto
+                        espaco = "";
+
+                        for (int c = tx.numero_caracteres(nmProduto[i]); c < 20; c++)
+                        {
+                            espaco = espaco + " ";
+
+                        }
+
+                        // Exibe
+                        Console.WriteLine("\nDepois--> Fabric.: ", cdFabricante[i], " | Prod.: ", nmProduto[i], espaco, " | Cor: ", corProduto[i]);
+
+                        //Confirmação do Usuário
+                        Console.WriteLine("\nConfirma a alteração? 1.SIM 2.NÃO ");
+
+                        Console.WriteLine("\nOpção desejada: ");
+
+                        sn2 = int.Parse(Console.ReadLine());
+
+                        if (sn2 == 1)
+
+                        {
+                            Console.WriteLine("Produto Alterado com Sucesso!\n-----------------------------------------------------------------\n");
+                            Console.WriteLine("Pressione Enter para retornar ao menu...");
+                            Console.ReadKey();
+
+                        }
 
                         //retorna os valores iniciais do vetor selecionado
+                        else
+                        {
+                            cdProduto[i] = guardarCod;
+
+                            nmProduto[i] = guardarNome;
+
+                            cdFabricante[i] = guardarCodFab;
+
+                            corProduto[i] = guardarCor;
+
+                            Console.WriteLine("\nProduto não alterado");
+
+                        }
+                    }
                     else
                     {
-                    cdProduto[i] = guardarCod;
-
-                    nmProduto[i] = guardarNome;
-
-                    cdFabricante[i] = guardarCodFab;
-
-                    corProduto[i] = guardarCor;
-
-                    Console.WriteLine("\nProduto não alterado");
-
-
-
+                        Console.WriteLine("\nProduto não alterado!");
+                        Console.ReadKey();
                     }
+
+                    //Vacilou
+                    if (i == 998)
+                    {
+                        Console.WriteLine("Produto não existe, favor verificar a lista.");
+                        Console.WriteLine("\nPressione Enter para retornar ao menu... ");
+                        Console.ReadKey();
                     }
-                else
-                {
-                Console.WriteLine("\nProduto não alterado!");
-                Console.ReadKey();
                 }
-                //Vacilou
-                if(i == 998)
-
-            {
-                Console.WriteLine("Produto não existe, favor verificar a lista.");
-
-                Console.WriteLine("\nPressione Enter para retornar ao menu... ");
-
-                Console.ReadKey();
-
-            }
             }
         }
 
-        static void ExcluirProduto(ref string [] cdProduto, ref string [] nmProduto, ref string [] cdFabricante, ref string [] corProduto)
+        static void ExcluirProduto(ref string[] cdProduto, ref string[] nmProduto, ref string[] cdFabricante, ref string[] corProduto)
         {
-        // FUNÇÃO muda o valor do item buscado "zzz" o excluindo
-        string excluido, nada, auxCad, espaco;
-        int i, sn, x, y;
-        Console.WriteLine("Digite o código do produto que deseja excluir: ");
-        excluido = Console.ReadLine();
-        //excluido = tx.preencher_a_esquerda('0', 3, excluido)
-        Console.Clear();
+            // FUNÇÃO muda o valor do item buscado "zzz" o excluindo
+            string excluido, espaco;
+            int i, sn;
+            Console.WriteLine("Digite o código do produto que deseja excluir: ");
+            excluido = Console.ReadLine();
+            excluido = tx.preencher_a_esquerda('0', 3, excluido);
+            Console.Clear();
             //laço para encontrar o vetor código
             for(i = 0; i < 999; i++)
-		{
+		    {
                 if(cdProduto[i] == excluido)
-
-            {
-                // formata o que será exibido conforme o tamanho da palavra do produto
-                espaco = "";
-
-                for(inteiro c = tx.numero_caracteres(nmProduto[i]); c < 20; c++)
-				{
-                    espaco = espaco + " ";
-
-                }
-
-                // Exibe
-                Console.WriteLine("O produto à seguir será excluído:\n");
-
-                Console.WriteLine("Cód.: ", cdProduto[i], " | Fabric.: ", cdFabricante[i], " | Prod.: ", nmProduto[i], espaco, " | Cor: ", corProduto[i]);
-
-                //Chance para o Usuário desistir
-                Console.WriteLine("\n\nConfirma a exclusão? 1.SIM 2.NÃO  ");
-
-                Console.WriteLine("\nOpção desejada: ");
-
-                sn = int.Parse(Console.ReadLine());
-
-                if(sn == 1)
                 {
-                    nmProduto[i] = cdFabricante[i] = corProduto[i] = "zzz";
+                    // formata o que será exibido conforme o tamanho da palavra do produto
+                    espaco = "";
 
-                    Console.WriteLine("\nO produto foi excluido");
-
-                }
-                    else
-
-                    {
-                    Console.WriteLine("\nO produto não foi excluido");
-
+                    for(int c = tx.numero_caracteres(nmProduto[i]); c < 20; c++)
+				    {
+                        espaco = espaco + " ";
                     }
-                Console.WriteLine("\nPressione Enter para retornar ao menu...");
 
-                Console.ReadKey();
+                    // Exibe
+                    Console.WriteLine("O produto à seguir será excluído:\n");
 
+                    Console.WriteLine("Cód.: ", cdProduto[i], " | Fabric.: ", cdFabricante[i], " | Prod.: ", nmProduto[i], espaco, " | Cor: ", corProduto[i]);
 
+                    //Chance para o Usuário desistir
+                    Console.WriteLine("\n\nConfirma a exclusão? 1.SIM 2.NÃO  ");
+                    Console.WriteLine("\nOpção desejada: ");
+                    sn = int.Parse(Console.ReadLine());
 
-            }
+                    if(sn == 1)
+                    {
+                        nmProduto[i] = cdFabricante[i] = corProduto[i] = "zzz";
+                        Console.WriteLine("\nO produto foi excluido");
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nO produto não foi excluido");
+                    }
+                    Console.WriteLine("\nPressione Enter para retornar ao menu...");
+
+                    Console.ReadKey();
+                }
                 //Vacilou
                 if(i == 998)
-
                 {
-                Console.WriteLine("Produto não existe, favor verificar a lista.");
-
-                Console.WriteLine("Pressione Enter para retornar ao menu...");
-
-                Console.ReadKey();
+                    Console.WriteLine("Produto não existe, favor verificar a lista.");
+                    Console.WriteLine("Pressione Enter para retornar ao menu...");
+                    Console.ReadKey();
                 }
             }
         }
 
-        static void MenuListagem(string []cdProduto, string []nmProduto, string [] cdFabricante, string [] corProduto)
+        static void MenuListagem(string[] cdProduto, string[] nmProduto, string[] cdFabricante, string[] corProduto)
         {
-        char listagem;
+            char listagem;
 
-        Console.WriteLine("Qual tipo de lista deseja ver? \n");
-        Console.WriteLine("1. Produtos ordenados por nome (em ordem alfabetica de um ponto a outro)\n");
-        Console.WriteLine("2. Listagem dos produtos por código\n");
-        Console.WriteLine("3. Exibir produtos de determinado fabricante\n");
-        Console.WriteLine("4. Exibição dos produtos pertencentes a detemrinada cor\n");
-        Console.WriteLine("5. Listagem de todos os produtos em estoque com todas as informações existentes sobre cada um dos produtos\n");
+            Console.WriteLine("Qual tipo de lista deseja ver? \n");
+            Console.WriteLine("1. Produtos ordenados por nome (em ordem alfabetica de um ponto a outro)\n");
+            Console.WriteLine("2. Listagem dos produtos por código\n");
+            Console.WriteLine("3. Exibir produtos de determinado fabricante\n");
+            Console.WriteLine("4. Exibição dos produtos pertencentes a detemrinada cor\n");
+            Console.WriteLine("5. Listagem de todos os produtos em estoque com todas as informações existentes sobre cada um dos produtos\n");
 
-        listagem = char.Parse(Console.ReadLine());
+            listagem = char.Parse(Console.ReadLine());
 
-        Console.Clear();    
+            Console.Clear();    
     
-        switch(listagem)
-    
-        {
-            case '1': ListaNome(cdProduto, nmProduto, cdFabricante, corProduto); break;
-            case '2': ListaCod(cdProduto, nmProduto, cdFabricante, corProduto); break;
-            case '3': ListaFab(cdProduto, nmProduto, cdFabricante, corProduto); break;
-            case '4': ListaCor(cdProduto, nmProduto, cdFabricante, corProduto); break;
-            case '5': Lista(cdProduto, nmProduto, cdFabricante, corProduto); break;
-
-        }
+            switch(listagem)
+            {
+                case '1': ListaNome(cdProduto, nmProduto, cdFabricante, corProduto); break;
+                case '2': ListaCod(cdProduto, nmProduto, cdFabricante, corProduto); break;
+                case '3': ListaFab(cdProduto, nmProduto, cdFabricante, corProduto); break;
+                case '4': ListaCor(cdProduto, nmProduto, cdFabricante, corProduto); break;
+                case '5': Lista(cdProduto, nmProduto, cdFabricante, corProduto); break;
+            }
         }
 
         static void ListaNome(string[] cdProduto, string[] nmProduto, string[] cdFabricante, string[] corProduto)
         {
-        string auxCad, nada, nmInicial, nmFinal, espaco;
-        int x, y, i, cont;
+            string auxCad, nmInicial, nmFinal, espaco;
+            int x, y, i, cont;
 
-        Console.WriteLine("Qual a letra inicial: ");
-        nmInicial = Console.ReadLine();
+            Console.Write("Qual a letra inicial: ");
+            nmInicial = Console.ReadLine();
+            nmInicial = nmInicial.ToUpper();
 
-        //nmInicial = tx.caixa_alta(nmInicial)
+            Console.Write("Qual a letra final: ");
+            nmFinal = Console.ReadLine();
+            nmFinal = nmFinal.ToUpper();
 
-        Console.WriteLine("Qual a letra final: ");
-        nmFinal = Console.ReadLine();
-    
-        //nmFinal = tx.caixa_alta(nmFinal)
-    
-        // Verifica se a letra inicial não é maior que a letra final
-            if(nmInicial > nmFinal)// string compare
-    
+            // Verifica se a letra inicial não é maior que a letra final
+            if(nmInicial > nmFinal)
             {
-            Console.WriteLine("ERRO! A letra inicial maior que final.");
+                Console.Write("ERRO! A letra inicial maior que final.");
             }
             //Verifica se foram digitados números
-            else if(tp.cadeia_e_inteiro(nmInicial, 10) == verdadeiro ou tp.cadeia_e_inteiro(nmFinal, 10) == verdadeiro);
-		{
-        Console.WriteLine("Digite somente letras!");
-        }
-        else
-        {
+            else if(tp.cadeia_e_inteiro(nmInicial, 10) == true || tp.cadeia_e_inteiro(nmFinal, 10) == true)
+		    {
+                Console.Write("Digite somente letras!");
+            }
+            else
+            {
                 // Reordena no método alfabético
-            for(x = 0; x < 998; x++)
-			{
-                for(y = x + 1; y < 999; y++)
+                for(x = 0; x < 998; x++)
+			    {
+                    for(y = x + 1; y < 999; y++)
 	
-				if(nmProduto[x] > nmProduto[y])
-
-                {
+				    if(nmProduto[x] > nmProduto[y])
+                    {
                         auxCad = nmProduto[x];
                         nmProduto[x] = nmProduto[y];
                         nmProduto[y] = auxCad;
@@ -473,271 +442,227 @@ namespace Trabalho
                         auxCad = corProduto[x];
                         corProduto[x] = corProduto[y];
                         corProduto[y] = auxCad;
-
-                }
-                }
-            Console.Clear();
-            //Produtos em ordem alfabética no intervalo especificado
-            Console.WriteLine("Todos os produtos de ", nmInicial, " até ", nmFinal, " em Ordem Alfabética \n\n");
-
-            cont = 0;
-
-            nmFinal = nmFinal + "zzzzz";
-
-
-            for(i = 0; i < 999; i++)
-			{
-                    if(nmProduto[i] != "zzz" e nmInicial <= nmFinal e nmProduto[i] >= nmInicial e nmProduto[i] <= nmFinal)
-
-                {
-                // formata o que será exibido conforme o tamanho da palavra do produto
-                espaco = "";
-
-                    for(inteiro c = tx.numero_caracteres(nmProduto[i]); c < 20; c++)
-					{
-                    espaco = espaco + " ";
-
                     }
-
-                // Exibe
-                cont++;
-
-                Console.WriteLine("Cód.: ", cdProduto[i], " | Fabric.: ", cdFabricante[i], " | Prod.: ", nmProduto[i], espaco, " | Cor: ", corProduto[i], "\n");
-
                 }
+                Console.Clear();
+
+                //Produtos em ordem alfabética no intervalo especificado
+                Console.Write("Todos os produtos de ", nmInicial, " até ", nmFinal, " em Ordem Alfabética \n\n");
+
+                cont = 0;
+
+                nmFinal = nmFinal + "zzzzz";
+
+
+                for(i = 0; i < 999; i++)
+			    {
+                    if(nmProduto[i] != "zzz" && nmInicial <= nmFinal && nmProduto[i] >= nmInicial && nmProduto[i] <= nmFinal)
+                    {
+                        // formata o que será exibido conforme o tamanho da palavra do produto
+                        espaco = "";
+
+                        for(int c = tx.numero_caracteres(nmProduto[i]); c < 20; c++)
+					    {
+                            espaco = espaco + " ";
+                        }
+
+                        // Exibe
+                        cont++;
+                        Console.Write("Cód.: ", cdProduto[i], " | Fabric.: ", cdFabricante[i], " | Prod.: ", nmProduto[i], espaco, " | Cor: ", corProduto[i], "\n");
+                    }
                 }
 
                 //Validação dos dados inseridos
                 if(cont != 0)
                 {
-            Console.WriteLine("Encontrado(s) ", cont, " produtos");
+                    Console.Write("Encontrado(s) ", cont, " produtos");
                 }
 
                 if(i == 998 || cont == 0)
-
                 {
-                Console.WriteLine("Não existem produtos nesta faixa: ");
-
+                    Console.Write("Não existem produtos nesta faixa: ");
                 }
             }
-        Console.WriteLine("\nPressione Enter para retornar ao menu... ");
-
-
-        Console.ReadKey();
-    
+            Console.Write("\nPressione Enter para retornar ao menu... ");
+            Console.ReadKey();
     }
 
-        static void ListaCod(string []cdProduto, string [] nmProduto, string [] cdFabricante, string [] corProduto)
+        static void ListaCod(string[] cdProduto, string[] nmProduto, string[] cdFabricante, string[] corProduto)
         {
-    //declarando variáveis
-        string auxCad, nada, cdInicial, cdFinal, espaco;
-        int x, y, i, cont;
+            //declarando variáveis
+            string auxCad, cdInicial, cdFinal, espaco;
+            int x, y, i, cont;
 
-         //Inicializar variáveis 
-         Console.WriteLine("Qual o número inicial: ");
-        cdInicial = Console.ReadLine();
+            //Inicializar variáveis 
+            Console.Write("Qual o número inicial: ");
+            cdInicial = Console.ReadLine();
+            cdInicial = tx.preencher_a_esquerda('0', 3, cdInicial);
 
-         //cdInicial = tx.preencher_a_esquerda('0', 3, cdInicial)
-         Console.WriteLine("Qual a número final: ");
-        cdFinal = Console.ReadLine();
-        //cdFinal = tx.preencher_a_esquerda('0', 3, cdFinal)
-    
+            Console.Write("Qual a número final: ");
+            cdFinal = Console.ReadLine();
+            cdFinal = tx.preencher_a_esquerda('0', 3, cdFinal);
 
-        if(cdInicial > cdFinal)
-    
-        {
-        Console.WriteLine("ERRO! O número inicial  é maior que o final.");
-        }
-            else if(tp.cadeia_e_inteiro(cdInicial, 10) == falso ou tp.cadeia_e_inteiro(cdFinal, 10) == falso)
-		{
-        Console.WriteLine("Digite somente números!");
-        }
-        else
-        {
-                //Rotina Ordena todos os vetores
-            for(x = 0; x < 998; x++)
-			{
-                for(y = x + 1; y < 999; y++)
-	
-				if(cdProduto[x] > cdProduto[y])
-
-                {
-                    auxCad = nmProduto[x];             
-                    nmProduto[x] = nmProduto[y];
-                    nmProduto[y] = auxCad;
-
-                    auxCad = cdProduto[x];
-                    cdProduto[x] = cdProduto[y];
-                    cdProduto[y] = auxCad;
-
-                    auxCad = cdFabricante[x];
-                    cdFabricante[x] = cdFabricante[y];
-                    cdFabricante[y] = auxCad;
-
-                    auxCad = corProduto[x];
-                    corProduto[x] = corProduto[y];
-                    corProduto[y] = auxCad;
-
-                }
-                }
-        Console.Clear();
-
-        //Produtos em ordem alfabética no intervalo
-        Console.WriteLine("Todos os produtos de ", cdInicial, " até ", cdFinal, " em Ordem Alfabética \n\n");
-
-        cdFinal = cdFinal + "zzzzz";
-
-        cont = 0;
-
-
-            for(i = 0; i < 999; i++)
-			{
-                    if(cdProduto[i] != "zzz" e cdInicial <= cdFinal  cdProduto[i] >= cdInicial e cdProduto[i] <= cdFinal)
-
-                {
-            // formata o que será exibido conforme o tamanho da palavra do produto
-            espaco = "";
-
-                    for(int c = i; c < 20; c++)
-					{
-                    espaco = espaco + " ";
-
-                    }
-
-                // Exibe
-                cont++;
-                Console.WriteLine("Cód.: ", cdProduto[i], " | Fabric.: ", cdFabricante[i], " | Prod.: ", nmProduto[i], espaco, " | Cor: ", corProduto[i], "\n")
-
-                }
-                }
-
-                //Validação dos dados inseridos do USUÁRIO
-                if(cont != 0)
-
-                {
-                Console.WriteLine("Encontrado(s) ", cont, " produtos");
-                }
-
-                if(i == 998 ou cont == 0)
-
-                 {
-                    Console.WriteLine("\nNão existem produtos nesta faixa: ");
-                 }
+            if(cdInicial > cdFinal)
+            {
+                Console.Write("ERRO! O número inicial  é maior que o final.");
             }
-                Console.WriteLine("\nPressione Enter para retornar ao menu... ");
+            else if(tp.cadeia_e_inteiro(cdInicial, 10) == false || tp.cadeia_e_inteiro(cdFinal, 10) == false)
+		    {
+                Console.Write("Digite somente números!");
+            }
+            else
+            {
+                //Rotina Ordena todos os vetores
+                for(x = 0; x < 998; x++)
+			    {
+                    for (y = x + 1; y < 999; y++)
+                    {
+                        if (cdProduto[x] > cdProduto[y])
+                        {
+                            auxCad = nmProduto[x];
+                            nmProduto[x] = nmProduto[y];
+                            nmProduto[y] = auxCad;
 
+                            auxCad = cdProduto[x];
+                            cdProduto[x] = cdProduto[y];
+                            cdProduto[y] = auxCad;
 
-                    Console.ReadKey();
-    
+                            auxCad = cdFabricante[x];
+                            cdFabricante[x] = cdFabricante[y];
+                            cdFabricante[y] = auxCad;
+
+                            auxCad = corProduto[x];
+                            corProduto[x] = corProduto[y];
+                            corProduto[y] = auxCad;
+                        }
+                    }
+                }
+                Console.Clear();
+
+                //Produtos em ordem alfabética no intervalo
+                Console.Write("Todos os produtos de ", cdInicial, " até ", cdFinal, " em Ordem Alfabética \n\n");
+                cdFinal = cdFinal + "zzzzz";
+                cont = 0;
+
+                for(i = 0; i < 999; i++)
+                {
+                    if (cdProduto[i] != "zzz" && cdInicial <= cdFinal && cdProduto[i] >= cdInicial && cdProduto[i] <= cdFinal)
+                    {
+                        // formata o que será exibido conforme o tamanho da palavra do produto
+                        espaco = "";
+
+                        for (int c = tx.numero_caracteres(nmProduto[i]); c < 20; c++)
+                        {
+                            espaco = espaco + " ";
+                        }
+
+                        // Exibe
+                        cont++;
+                        Console.Write("Cód.: ", cdProduto[i], " | Fabric.: ", cdFabricante[i], " | Prod.: ", nmProduto[i], espaco, " | Cor: ", corProduto[i], "\n");
+                    }
+                }
+            //Validação dos dados inseridos do USUÁRIO
+            if(cont != 0)
+            {
+                Console.Write("Encontrado(s) ", cont, " produtos");
+            }
+
+            if(i == 998 || cont == 0)
+            {
+                Console.Write("\nNão existem produtos nesta faixa: ");
+            }
+        }
+        Console.Write("\nPressione Enter para retornar ao menu... ");
+        Console.ReadKey();
     }
 
         static void ListaFab(string [] cdProduto, string[] nmProduto, string [] cdFabricante, string [] corProduto)
         {
-        string auxCad, nada, fab, espaco;
-        int i;
+            string fab, espaco;
+            int i;
 
-        Console.WriteLine("Qual Fabricante procura? ");
+            Console.WriteLine("Qual Fabricante procura? ");
+            fab = Console.ReadLine();
+            fab = fab.ToUpper();
 
-        fab = Console.ReadLine();
-
-    //fab = tx.caixa_alta(fab)
-
-    Console.Clear();
+            Console.Clear();
         
-        for(i = 0; i < 999; i++)
-		{
-            if(cdFabricante[i] == fab)
-            {
-            // formata o que será exibido conforme o tamanho da palavra do produto
-            espaco = "";
+            for(i = 0; i < 999; i++)
+		    {
+                if(cdFabricante[i] == fab)
+                {
+                    // formata o que será exibido conforme o tamanho da palavra do produto
+                    espaco = "";
 
-                for(int c =i; c < 20; c++)
-				{
-                espaco = espaco + " ";
+                    for(int c =i; c < 20; c++)
+				    {
+                        espaco = espaco + " ";
+                    }
 
+                    // Exibe
+                    Console.WriteLine("Cód.: ", cdProduto[i], " | Fabric.: ", cdFabricante[i], " | Prod.: ", nmProduto[i], espaco, " | Cor: ", corProduto[i], "\n");
                 }
-
-            // Exibe
-            Console.WriteLine("Cód.: ", cdProduto[i], " | Fabric.: ", cdFabricante[i], " | Prod.: ", nmProduto[i], espaco, " | Cor: ", corProduto[i], "\n");
-
             }
-            }
-         Console.WriteLine("\nPressione Enter para retornar ao menu... ");
-
-        Console.ReadKey();
-    
-    }
+            Console.WriteLine("\nPressione Enter para retornar ao menu... ");
+            Console.ReadKey();
+        }
 
         static void ListaCor(string[] cdProduto, string[] nmProduto, string[] cdFabricante, string[] corProduto)
         {
-        string auxCad, nada, cor, espaco;
-        int i;
+            string cor, espaco;
+            int i;
 
-        Console.WriteLine("Qual Cor procura? ");
-
-        cor = Console.ReadLine();
-        //cor = tx.caixa_alta(cor)
-         Console.Clear();
+            Console.WriteLine("Qual Cor procura? ");
+            cor = Console.ReadLine();
+            cor = cor.ToUpper();
+            Console.Clear();
     
-        for(i = 0; i < 999; i++)
-		{
+            for(i = 0; i < 999; i++)
+		    {
                 if(corProduto[i] == cor)
                 {
-                // formata o que será exibido conforme o tamanho da palavra do produto
-                espaco = "";
+                    // formata o que será exibido conforme o tamanho da palavra do produto
+                    espaco = "";
 
-                for(int c =i; c < 20; c++)
-				{
-                espaco = espaco + " ";
+                    for(int c =i; c < 20; c++)
+				    {
+                        espaco = espaco + " ";
+                    }
 
+                    // Exibe
+                    Console.WriteLine("Cód.: ", cdProduto[i], " | Fabric.: ", cdFabricante[i], " | Prod.: ", nmProduto[i], espaco, " | Cor: ", corProduto[i], "\n");
                 }
-
-            // Exibe
-            Console.WriteLine("Cód.: ", cdProduto[i], " | Fabric.: ", cdFabricante[i], " | Prod.: ", nmProduto[i], espaco, " | Cor: ", corProduto[i], "\n");
-
-                }
+            }
+            Console.WriteLine("\nPressione Enter para retornar ao menu... ");
+            Console.ReadKey();
         }
-                  Console.WriteLine("\nPressione Enter para retornar ao menu... ");
-
-                 Console.ReadKey();
-         
-    }
 
         static void Lista(string[] cdProduto, string[] nmProduto, string[] cdFabricante, string[] corProduto)
         {
-        int i, totaItens;
-        string nada, espaco;
+            int i, totaItens = 0;
+            string espaco;
     
-        for(i = 0; i < 999; i++)
-		{
+            for(i = 0; i < 999; i++)
+		    {
                 if(nmProduto[i] != "zzz")
-
                 {
-                // formata o que será exibido conforme o tamanho da palavra do produto
-                espaco = "";
+                    // formata o que será exibido conforme o tamanho da palavra do produto
+                    espaco = "";
 
-                for(int c = i; c < 20; c++)
-				{
-                espaco = espaco + " ";
+                    for(int c = i; c < 20; c++)
+				    {
+                        espaco = espaco + " ";
+                    }
 
-                }
-
-            // Exibe
-            Console.WriteLine("Cód.: ", cdProduto[i], " | Fabric.: ", cdFabricante[i], " | Prod.: ", nmProduto[i], espaco, " | Cor: ", corProduto[i], "\n");
-
-            totaItens = i;
-
+                    // Exibe
+                    Console.WriteLine("Cód.: ", cdProduto[i], " | Fabric.: ", cdFabricante[i], " | Prod.: ", nmProduto[i], espaco, " | Cor: ", corProduto[i], "\n");
+                    totaItens = i;
                 }
             }
-                totaItens++;
-
-        Console.WriteLine("\nTotal de " + totaItens + " itens na lista\n");
-
-    Console.WriteLine("Pressione Enter para retornar ao menu...");
-
-    Console.Clear();
-    
-    }
-
+            totaItens++;
+            Console.WriteLine("\nTotal de " + totaItens + " itens na lista\n");
+            Console.WriteLine("Pressione Enter para retornar ao menu...");
+            Console.ReadKey();
+        }
     }
 }
