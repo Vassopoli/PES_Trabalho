@@ -173,5 +173,170 @@ namespace Trabalho
                 }
             }
         }
+        static void AlterarProduto(ref string [] cdProduto, ref string [] nmProduto, ref string [] cdFabricante, ref string []corProduto)
+        {
+            // Declarando variáveis
+            int i, sn, sn2;
+            string codigo, nada, guardarCod, guardarNome, guardarCodFab, guardarCor, espaco;
+
+
+            Console.WriteLine("Insira o Código do produto que deseja alterar: ");
+            codigo = Console.ReadLine();
+
+
+            //codigo = tx.preencher_a_esquerda('0', 3, codigo)
+
+            Console.Clear();
+
+
+            for(i = 0; i < 999; i++)
+		    {
+                    if(cdProduto[i] == codigo)
+
+                {
+                    // formata o que será exibido conforme o tamanho da palavra do produto
+                    espaco = "";
+
+                    for(inteiro c = tx.numero_caracteres(nmProduto[i]); c < 20; c++)
+				    {
+                        espaco = espaco + " ";
+
+                    }
+
+                    // Exibe
+                    Console.WriteLine("O produto à seguir será alterado:\n");
+
+                    Console.WriteLine("Cód.: ", cdProduto[i], " | Fabric.: ", cdFabricante[i], " | Prod.: ", nmProduto[i], espaco, " | Cor: ", corProduto[i]);
+
+                    //variaveis que guardam o vetor inicial
+                        guardarCod = cdProduto[i]
+
+                    guardarNome = nmProduto[i]
+
+                    guardarCodFab = cdFabricante[i]
+
+                    guardarCor = corProduto[i]
+
+                    //Confirmaão do usuário
+                        escreva("\n\nEste é o Produto que deseja alterar? 1.SIM  2.NÃO")
+
+                    escreva("\nOpção desejada: ")
+
+                    leia(sn)
+
+                    limpa()
+
+                    se(sn == 1)
+
+                    {
+                            escreva("Insira o novo código do fabricante: ")
+
+                        leia(cdFabricante[i])
+
+                        cdFabricante[i] = tx.caixa_alta(cdFabricante[i])
+
+                        escreva("Digite nome do Produto: ")
+
+                        leia(nmProduto[i])
+
+                        nmProduto[i] = tx.caixa_alta(nmProduto[i])
+
+                        escreva("Insira a nova cor: ")
+
+                        leia(corProduto[i])
+
+                        corProduto[i] = tx.caixa_alta(corProduto[i])
+
+                        //Exibe o Novo Produto
+                            escreva("\nCódigo: ", cdProduto[i])
+
+                        // formata o que será exibido conforme o tamanho da palavra do produto
+                            espaco = ""
+
+                        para(inteiro c = tx.numero_caracteres(guardarNome); c < 20; c++)
+					    {
+                                espaco = espaco + " "
+
+                        }
+
+                            // Exibe
+                            escreva("\nAntes-->  Fabric.: ", guardarCodFab, " | Prod.: ", guardarNome, espaco, " | Cor: ", guardarCor)
+
+                        // formata o que será exibido conforme o tamanho da palavra do produto
+                            espaco = ""
+
+                        para(inteiro c = tx.numero_caracteres(nmProduto[i]); c < 20; c++)
+					    {
+                                espaco = espaco + " "
+
+                        }
+
+                            // Exibe
+                            escreva("\nDepois--> Fabric.: ", cdFabricante[i], " | Prod.: ", nmProduto[i], espaco, " | Cor: ", corProduto[i])
+
+                        //Confirmação do Usuário
+                            escreva("\nConfirma a alteração? 1.SIM 2.NÃO ")
+
+                        escreva("\nOpção desejada: ")
+
+                        leia(sn2)
+
+                        se(sn2 == 1)
+
+                        {
+                                escreva("Produto Alterado com Sucesso!\n-----------------------------------------------------------------\n")
+
+                            escreva("Pressione Enter para retornar ao menu...")
+
+                            leia(nada)
+
+                            pare
+
+                        }
+
+                            //retorna os valores iniciais do vetor selecionado
+                            senao
+
+                        {
+                                cdProduto[i] = guardarCod
+
+                            nmProduto[i] = guardarNome
+
+                            cdFabricante[i] = guardarCodFab
+
+                            corProduto[i] = guardarCor
+
+                            escreva("\nProduto não alterado")
+
+                            pare
+
+                        }
+                        }
+                        senao
+
+                    {
+                            escreva("\nProduto não alterado!")
+
+                        leia(nada)
+
+                        pare
+
+                    }
+                    }
+                    //Vacilou
+                    se(i == 998)
+
+                {
+                        escreva("Produto não existe, favor verificar a lista.")
+
+                    escreva("\nPressione Enter para retornar ao menu... ")
+
+                    leia(nada)
+
+                    break;
+
+                }
+                }
+            }
     }
 }
