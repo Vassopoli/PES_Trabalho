@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Trabalho
@@ -152,7 +153,7 @@ namespace Trabalho
                     // formata o que será exibido conforme o tamanho da palavra do produto
                     espaco = "";
 
-                    for(int c = tx.numero_caracteres(nmProduto[i]); c < 20; c++)
+                    for(int c = nmProduto[i].Length; c < 20; c++)
 				    {
                         espaco = espaco + " ";
 
@@ -409,12 +410,12 @@ namespace Trabalho
             nmFinal = nmFinal.ToUpper();
 
             // Verifica se a letra inicial não é maior que a letra final
-            if(string.Compare(nmInicial, nmFinal)==1)
+            if (string.Compare(nmInicial, nmFinal)==1)
             {
                 Console.Write("ERRO! A letra inicial maior que final.");
             }
             //Verifica se foram digitados números
-            else if(tp.cadeia_e_inteiro(nmInicial, 10) == true || tp.cadeia_e_inteiro(nmFinal, 10) == true)
+            else if (!Regex.IsMatch(nmInicial, @"^[a-zA-Z]+$") || !Regex.IsMatch(nmFinal, @"^[a-zA-Z]+$"))
 		    {
                 Console.Write("Digite somente letras!");
             }
@@ -506,7 +507,7 @@ namespace Trabalho
             {
                 Console.Write("ERRO! O número inicial  é maior que o final.");
             }
-            else if(tp.cadeia_e_inteiro(cdInicial, 10) == false || tp.cadeia_e_inteiro(cdFinal, 10) == false)
+            else if(Regex.IsMatch(cdInicial, @"^[a-zA-Z]+$") || Regex.IsMatch(cdFinal, @"^[a-zA-Z]+$"))
 		    {
                 Console.Write("Digite somente números!");
             }
