@@ -1,3 +1,4 @@
-# PES_Trabalho
+# PES_Trabalho - Releases
 
-v1.0 = teste
+Alimenta15
+- Foi passada do portugol a função que alimenta os vetores  com 15 produtos
