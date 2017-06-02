@@ -409,7 +409,7 @@ namespace Trabalho
             nmFinal = nmFinal.ToUpper();
 
             // Verifica se a letra inicial não é maior que a letra final
-            if(nmInicial > nmFinal)
+            if(string.Compare(nmInicial, nmFinal)==1)
             {
                 Console.Write("ERRO! A letra inicial maior que final.");
             }
@@ -425,7 +425,7 @@ namespace Trabalho
 			    {
                     for(y = x + 1; y < 999; y++)
 	
-				    if(nmProduto[x] > nmProduto[y])
+				    if(string.Compare(nmProduto[x], nmProduto[y])==1)
                     {
                         auxCad = nmProduto[x];
                         nmProduto[x] = nmProduto[y];
@@ -456,7 +456,7 @@ namespace Trabalho
 
                 for(i = 0; i < 999; i++)
 			    {
-                    if(nmProduto[i] != "zzz" && nmInicial <= nmFinal && nmProduto[i] >= nmInicial && nmProduto[i] <= nmFinal)
+                    if(nmProduto[i] != "zzz" && string.Compare (nmInicial, nmFinal)==1 && string.Compare (nmProduto[i], nmInicial)==1 &&string.Compare (nmProduto[i], nmFinal)==1)
                     {
                         // formata o que será exibido conforme o tamanho da palavra do produto
                         espaco = "";
@@ -502,7 +502,7 @@ namespace Trabalho
             cdFinal = Console.ReadLine();
             cdFinal = tx.preencher_a_esquerda('0', 3, cdFinal);
 
-            if(cdInicial > cdFinal)
+            if(string.Compare(cdInicial, cdFinal)==1)
             {
                 Console.Write("ERRO! O número inicial  é maior que o final.");
             }
@@ -517,7 +517,7 @@ namespace Trabalho
 			    {
                     for (y = x + 1; y < 999; y++)
                     {
-                        if (cdProduto[x] > cdProduto[y])
+                        if (string.Compare (cdProduto[x], cdProduto[y])==1)
                         {
                             auxCad = nmProduto[x];
                             nmProduto[x] = nmProduto[y];
@@ -546,12 +546,12 @@ namespace Trabalho
 
                 for(i = 0; i < 999; i++)
                 {
-                    if (cdProduto[i] != "zzz" && cdInicial <= cdFinal && cdProduto[i] >= cdInicial && cdProduto[i] <= cdFinal)
+                    if (cdProduto[i] != "zzz" && string.Compare(cdInicial , cdFinal)==1 && string.Compare(cdProduto[i], cdInicial)==1 && string.Compare(cdProduto[i], cdFinal)==1)
                     {
                         // formata o que será exibido conforme o tamanho da palavra do produto
                         espaco = "";
 
-                        for (int c = tx.numero_caracteres(nmProduto[i]); c < 20; c++)
+                        for (int c = tx.numero_caracteres(nmProduto[i]); c < 20; c++) 
                         {
                             espaco = espaco + " ";
                         }
