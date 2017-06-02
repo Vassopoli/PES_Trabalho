@@ -181,7 +181,7 @@ namespace Trabalho
             Console.WriteLine("Insira o Código do produto que deseja alterar: ");
             codigo = Console.ReadLine();
 
-            codigo = tx.preencher_a_esquerda('0', 3, codigo);
+            codigo = codigo.PadLeft(3,'0');
             Console.Clear();
 
             for (i = 0; i < 999; i++)
@@ -322,7 +322,7 @@ namespace Trabalho
             int i, sn;
             Console.WriteLine("Digite o código do produto que deseja excluir: ");
             excluido = Console.ReadLine();
-            excluido = tx.preencher_a_esquerda('0', 3, excluido);
+            excluido = excluido.PadLeft(3, '0');
             Console.Clear();
             //laço para encontrar o vetor código
             for(i = 0; i < 999; i++)
@@ -496,11 +496,11 @@ namespace Trabalho
             //Inicializar variáveis 
             Console.Write("Qual o número inicial: ");
             cdInicial = Console.ReadLine();
-            cdInicial = tx.preencher_a_esquerda('0', 3, cdInicial);
+            cdInicial = cdInicial.PadLeft(3,'0');
 
             Console.Write("Qual a número final: ");
             cdFinal = Console.ReadLine();
-            cdFinal = tx.preencher_a_esquerda('0', 3, cdFinal);
+            cdFinal = cdFinal.PadLeft(3,'0');
 
             if(string.Compare(cdInicial, cdFinal)==1)
             {
