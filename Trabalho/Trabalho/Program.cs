@@ -168,6 +168,9 @@ namespace Trabalho
                     break;
 
                     // Commitei e sai correndo, pnc de quem ta lendo.
+                    // Sem nexo
+                    // Meu pau é o espelho, teu cu o reflexo
+                    // Repolho humano
                 }
             }
         }
