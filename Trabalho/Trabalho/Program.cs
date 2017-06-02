@@ -27,7 +27,7 @@ namespace Trabalho
                 nmProduto[i] = cdFabricante[i] = corProduto[i] = "zzz";
 
                 // Preenche a esquerda do cdProduto com "0" até o código ter 3 casas. Ex.: 001, 010, 100
-                cdProduto[i] = tx.preencher_a_esquerda('0', 3, tp.inteiro_para_cadeia(i + 1, 10));
+                cdProduto[i] = cdProduto[i].PadLeft(3, '0');
             }
 
             //ALIMENTANDO VETORES COM 15 VALORES CADA
@@ -191,7 +191,7 @@ namespace Trabalho
                     // formata o que será exibido conforme o tamanho da palavra do produto
                     espaco = "";
 
-                    for (int c = tx.numero_caracteres(nmProduto[i]); c < 20; c++)
+                    for (int c = nmProduto[i].Length; c < 20; c++)
                     {
                         espaco = espaco + " ";
                     }
@@ -246,7 +246,7 @@ namespace Trabalho
                         // formata o que será exibido conforme o tamanho da palavra do produto
                         espaco = "";
 
-                        for (int c = tx.numero_caracteres(guardarNome); c < 20; c++)
+                        for (int c = guardarNome.Length; c < 20; c++)
                         {
                             espaco = espaco + " ";
 
@@ -258,7 +258,7 @@ namespace Trabalho
                         // formata o que será exibido conforme o tamanho da palavra do produto
                         espaco = "";
 
-                        for (int c = tx.numero_caracteres(nmProduto[i]); c < 20; c++)
+                        for (int c = nmProduto[i].Length; c < 20; c++)
                         {
                             espaco = espaco + " ";
 
@@ -332,7 +332,7 @@ namespace Trabalho
                     // formata o que será exibido conforme o tamanho da palavra do produto
                     espaco = "";
 
-                    for(int c = tx.numero_caracteres(nmProduto[i]); c < 20; c++)
+                    for(int c = nmProduto[i].Length; c < 20; c++)
 				    {
                         espaco = espaco + " ";
                     }
@@ -461,7 +461,7 @@ namespace Trabalho
                         // formata o que será exibido conforme o tamanho da palavra do produto
                         espaco = "";
 
-                        for(int c = tx.numero_caracteres(nmProduto[i]); c < 20; c++)
+                        for(int c = nmProduto[i].Length; c < 20; c++)
 					    {
                             espaco = espaco + " ";
                         }
@@ -551,7 +551,7 @@ namespace Trabalho
                         // formata o que será exibido conforme o tamanho da palavra do produto
                         espaco = "";
 
-                        for (int c = tx.numero_caracteres(nmProduto[i]); c < 20; c++) 
+                        for (int c = nmProduto[i].Length; c < 20; c++) 
                         {
                             espaco = espaco + " ";
                         }
