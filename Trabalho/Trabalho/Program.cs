@@ -28,6 +28,7 @@ namespace Trabalho
                 nmProduto[i] = cdFabricante[i] = corProduto[i] = "zzz";
 
                 // Preenche a esquerda do cdProduto com "0" até o código ter 3 casas. Ex.: 001, 010, 100
+                cdProduto[i] = (i + 1).ToString();
                 cdProduto[i] = cdProduto[i].PadLeft(3, '0');
             }
 
@@ -595,7 +596,7 @@ namespace Trabalho
                     // formata o que será exibido conforme o tamanho da palavra do produto
                     espaco = "";
 
-                    for(int c =i; c < 20; c++)
+                    for(int c = cdFabricante[i].Length; c < 20; c++)
 				    {
                         espaco = espaco + " ";
                     }
@@ -625,7 +626,7 @@ namespace Trabalho
                     // formata o que será exibido conforme o tamanho da palavra do produto
                     espaco = "";
 
-                    for(int c =i; c < 20; c++)
+                    for(int c = corProduto[i].Length; c < 20; c++)
 				    {
                         espaco = espaco + " ";
                     }
@@ -650,13 +651,13 @@ namespace Trabalho
                     // formata o que será exibido conforme o tamanho da palavra do produto
                     espaco = "";
 
-                    for(int c = i; c < 20; c++)
+                    for(int c = nmProduto[i].Length; c < 20; c++)
 				    {
                         espaco = espaco + " ";
                     }
 
                     // Exibe
-                    Console.WriteLine("Cód.: ", cdProduto[i], " | Fabric.: ", cdFabricante[i], " | Prod.: ", nmProduto[i], espaco, " | Cor: ", corProduto[i], "\n");
+                    Console.WriteLine("Cód.: {0} | Fabric.: {1} | Prod.: {2}{3} | Cor: {4}\n", cdProduto[i], cdFabricante[i], nmProduto[i], espaco, corProduto[i]);
                     totaItens = i;
                 }
             }
