@@ -111,6 +111,8 @@ namespace Trabalho
             corProduto[12] = "VERMELHO";
             corProduto[13] = "ROXO";
             corProduto[14] = "CINZA";
+
+            // Mexendo na funcao de cima, mas o ali mexeu ali em baixo. e eu n sei disso huehuebr ele n me dise
         }
         static void IncluirProduto(ref string[] cdProduto, ref string[] nmProduto, ref string[] cdFabricante, ref string[] corProduto)
         {
