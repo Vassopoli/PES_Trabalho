@@ -31,7 +31,7 @@ namespace Trabalho
             }
 
             //ALIMENTANDO VETORES COM 15 VALORES CADA
-            Alimenta15(ref cdProduto[], ref nmProduto[], ref cdFabricante[], ref corProduto[]);
+            Alimenta15(ref cdProduto, ref nmProduto, ref cdFabricante, ref corProduto);
 
             //LAÇO DO MENU PRINCIPAL
             do
@@ -52,11 +52,10 @@ namespace Trabalho
                 //ESCOLHA DO USUÁRIO LEVA A UMA FUNÇÃO DE ALTERAR OU MENU DE LISTAS	
                 switch (menu)
                 {
-                    case '1': IncluirProduto(cdProduto, nmProduto, cdFabricante, corProduto); break;
-                    case '2': AlterarProduto(cdProduto, nmProduto, cdFabricante, corProduto); break;
+                    case '1': IncluirProduto(ref cdProduto, ref nmProduto, ref cdFabricante, ref corProduto); break;
+                    case '2': AlterarProduto(ref cdProduto, ref nmProduto, ref cdFabricante, ref corProduto); break;
                     case '3': ExcluirProduto(cdProduto, nmProduto, cdFabricante, corProduto); break;
                     case '4': MenuListagem(cdProduto, nmProduto, cdFabricante, corProduto); break;
-
                 }
             }
             while (menu != '5');
@@ -112,6 +111,63 @@ namespace Trabalho
             corProduto[12] = "VERMELHO";
             corProduto[13] = "ROXO";
             corProduto[14] = "CINZA";
+        }
+        static void IncluirProduto(ref string[] cdProduto, ref string[] nmProduto, ref string[] cdFabricante, ref string[] corProduto)
+        {
+            // Declando variáveis	
+            string espaco;
+            int i = 0;
+
+            for(i = 0; i <= 999; i++)
+		    {
+                if(i == 999)
+                {
+                    Console.Write("não há mais espaço para inclusão");
+                    break;
+                }
+                else if(nmProduto[i] == "zzz")
+                {
+                    Console.Write("Para um novo produto digite:\n\n");
+                    Console.Write("O nome: ");
+
+                    nmProduto[i] = Console.ReadLine();
+
+                    nmProduto[i] = nmProduto[i].ToUpper();
+
+                    Console.Write("O Código do Fabricante no formato 'AAA' ");
+
+                    cdFabricante[i] = Console.ReadLine();
+
+                    cdFabricante[i] = cdFabricante[i].ToUpper();
+
+                    Console.Write("E a cor (Substantivo em masculino Ex.: Preto, Vermelho): ");
+
+                    corProduto[i] = Console.ReadLine();
+
+                    corProduto[i] = corProduto[i].ToUpper();
+
+                    Console.Write("\nO seguinte produto: \n");
+
+                    // formata o que será exibido conforme o tamanho da palavra do produto
+                    espaco = "";
+
+                    for(int c = tx.numero_caracteres(nmProduto[i]); c < 20; c++)
+				    {
+                        espaco = espaco + " ";
+
+                    }
+
+                    // Exibe
+                    Console.Write("Cód.: ", cdProduto[i], " | Fabric.: ", cdFabricante[i], " | Prod.: ", nmProduto[i], espaco, " | Cor: ", corProduto[i], "\n");
+
+                    // escreva("Codigo: ", cdProduto [i]," Código do Fabricante:  ",  cdFabricante [i], " ", nmProduto [i]," "," Cor: ", corProduto[i], "\n")
+                    Console.Write("Foi incluido!\n-----------------------------------------------------------------\n");
+                    Console.Write("Pressione Enter para retornar ao menu...");
+
+                    Console.ReadKey();
+                    break;
+                }
+            }
         }
     }
 }
