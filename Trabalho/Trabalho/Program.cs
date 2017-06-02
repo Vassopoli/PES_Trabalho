@@ -166,6 +166,8 @@ namespace Trabalho
 
                     Console.ReadKey();
                     break;
+
+                    // Commitei e sai correndo, pnc de quem ta lendo.
                 }
             }
         }
