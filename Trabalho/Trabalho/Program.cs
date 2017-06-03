@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Text.RegularExpressions;
 namespace Trabalho
 {
     class Program
@@ -47,6 +47,12 @@ namespace Trabalho
                 Console.Write("Opção desejada: ");
 
                 menu = char.Parse(Console.ReadLine());
+                if(menu >5)
+                {
+                    Console.WriteLine("Erro! Digite uma opção válida! \nPressione Enter para retornar ao menu...");
+                    Console.ReadKey();
+                    Console.Clear();
+                }
 
                 Console.Clear();
 
@@ -57,6 +63,7 @@ namespace Trabalho
                     case '2': AlterarProduto(ref cdProduto, ref nmProduto, ref cdFabricante, ref corProduto); break;
                     case '3': ExcluirProduto(ref cdProduto, ref nmProduto, ref cdFabricante, ref corProduto); break;
                     case '4': MenuListagem(cdProduto, nmProduto, cdFabricante, corProduto); break;
+
                 }
             }
             while (menu != '5');
@@ -479,10 +486,10 @@ namespace Trabalho
             {
                 Console.Write("ERRO! O número inicial  é maior que o final.");
             }
-            //  else if (Regex.IsMatch(cdInicial, @"[0-9]") || Regex.IsMatch(cdFinal, @"[0-9]"))
-            //  {
-            //       Console.Write("Digite somente números!");
-            //    }
+              else if (Regex.IsMatch(cdInicial, @"[0-9]") && Regex.IsMatch(cdFinal, @"[0-9]"))
+              {
+                  Console.Write("Digite somente números!");
+               }
             else
             {
                 //Rotina Ordena todos os vetores
