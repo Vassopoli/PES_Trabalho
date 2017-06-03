@@ -151,7 +151,7 @@ namespace Trabalho
 
                     cdFabricante[i] = cdFabricante[i].ToUpper();
 
-                    Console.Write("E a cor (Substantivo em masculino Ex.: Preto, Vermelho): ");
+                    Console.Write("E a cor (Substantivo em masculino no singular Ex.: Preto, Vermelho): ");
 
                     corProduto[i] = Console.ReadLine();
 
@@ -334,7 +334,7 @@ namespace Trabalho
                     }
 
                     // Exibe
-                    Console.WriteLine("O produto à seguir será excluído:\n");
+                    Console.WriteLine("O produto à seguir será excluído:\nCaso o produto esteja em branco, significa que ainda não foi cadastrado.");
 
                     Console.WriteLine("Cód.: ", cdProduto[i], " | Fabric.: ", cdFabricante[i], " | Prod.: ", nmProduto[i], espaco, " | Cor: ", corProduto[i]);
 
@@ -352,14 +352,14 @@ namespace Trabalho
                     {
                         Console.WriteLine("\nO produto não foi excluido");
                     }
-                    Console.WriteLine("\nPressione Enter para retornar ao menu...");
+                    Console.WriteLine("\nPressione Enter para retornar...");
 
                     Console.ReadKey();
                 }
                 //Vacilou
                 if (i == 998)
                 {
-                    Console.WriteLine("Favor verificar a lista.");
+                    Console.WriteLine("Não esqueça de verificar a lista.");
                     Console.WriteLine("Pressione Enter para retornar ao menu...");
                     Console.ReadKey();
                 }
