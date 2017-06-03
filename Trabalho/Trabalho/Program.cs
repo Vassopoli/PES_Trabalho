@@ -179,7 +179,7 @@ namespace Trabalho
 
             string codigo, guardarCod, guardarNome, guardarCodFab, guardarCor, espaco;
 
-            Console.WriteLine("Insira o Código do produto que deseja alterar: ");
+            Console.Write("Insira o Código do produto que deseja alterar.\nCaso o produto não exista, o programa retornará ao menu.\nCodigo: ");
             codigo = Console.ReadLine();
 
             codigo = codigo.PadLeft(3, '0');
@@ -211,7 +211,7 @@ namespace Trabalho
                         sn = int.Parse(Console.ReadLine());
 
                         ValidacaoSN(sn);
-                    } while (sn != 1 || sn != 2);
+                    } while (sn != 1 && sn != 2);
 
                     Console.Clear();
 
@@ -260,13 +260,13 @@ namespace Trabalho
                             Console.WriteLine("\nOpção desejada: ");
 
                             sn2 = int.Parse(Console.ReadLine());
-                            if (sn2 != 1 || sn2 != 2)
+                            if (sn2 != 1 && sn2 != 2)
                             {
                                 Console.WriteLine("Digite apenas 1 ou 2.");
                                 Console.ReadKey();
                                 Console.Clear();
                             }
-                        } while (sn2 != 1 || sn2 != 2);
+                        } while (sn2 != 1 && sn2 != 2);
 
 
                         if (sn2 == 1)
@@ -302,7 +302,7 @@ namespace Trabalho
                     //Vacilou
                     if (i == 998)
                     {
-                        Console.WriteLine("Produto não existe, favor verificar a lista.");
+                        Console.WriteLine("Favor verificar a lista.");
                         Console.WriteLine("\nPressione Enter para retornar ao menu... ");
                         Console.ReadKey();
                     }
@@ -320,6 +320,7 @@ namespace Trabalho
             excluido = excluido.PadLeft(3, '0');
             Console.Clear();
             //laço para encontrar o vetor código
+
             for (i = 0; i < 999; i++)
             {
                 if (cdProduto[i] == excluido)
@@ -358,7 +359,7 @@ namespace Trabalho
                 //Vacilou
                 if (i == 998)
                 {
-                    Console.WriteLine("Produto não existe, favor verificar a lista.");
+                    Console.WriteLine("Favor verificar a lista.");
                     Console.WriteLine("Pressione Enter para retornar ao menu...");
                     Console.ReadKey();
                 }
@@ -550,7 +551,7 @@ namespace Trabalho
                     Console.Write("Encontrado(s) ", cont, " produtos");
                 }
 
-                if (i == 998 || cont == 0)
+                if (i == 998 && cont == 0)
                 {
                     Console.Write("\nNão existem produtos nesta faixa: ");
                 }
@@ -671,7 +672,7 @@ namespace Trabalho
         }
         static void ValidacaoSN(int sn)
         {
-            if (sn != 1 || sn != 2)
+            if (sn != 1 && sn != 2)
             {
                 Console.WriteLine("Digite apenas 1 ou 2.");
                 Console.ReadKey();
