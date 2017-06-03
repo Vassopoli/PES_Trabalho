@@ -47,23 +47,26 @@ namespace Trabalho
                 Console.Write("Opção desejada: ");
 
                 menu = char.Parse(Console.ReadLine());
-                if(menu >5)
+                if (menu > '5')
                 {
                     Console.WriteLine("Erro! Digite uma opção válida! \nPressione Enter para retornar ao menu...");
                     Console.ReadKey();
                     Console.Clear();
                 }
-
-                Console.Clear();
-
-                //ESCOLHA DO USUÁRIO LEVA A UMA FUNÇÃO DE ALTERAR OU MENU DE LISTAS	
-                switch (menu)
+                else
                 {
-                    case '1': IncluirProduto(ref cdProduto, ref nmProduto, ref cdFabricante, ref corProduto); break;
-                    case '2': AlterarProduto(ref cdProduto, ref nmProduto, ref cdFabricante, ref corProduto); break;
-                    case '3': ExcluirProduto(ref cdProduto, ref nmProduto, ref cdFabricante, ref corProduto); break;
-                    case '4': MenuListagem(cdProduto, nmProduto, cdFabricante, corProduto); break;
 
+                    Console.Clear();
+
+                    //ESCOLHA DO USUÁRIO LEVA A UMA FUNÇÃO DE ALTERAR OU MENU DE LISTAS	
+                    switch (menu)
+                    {
+                        case '1': IncluirProduto(ref cdProduto, ref nmProduto, ref cdFabricante, ref corProduto); break;
+                        case '2': AlterarProduto(ref cdProduto, ref nmProduto, ref cdFabricante, ref corProduto); break;
+                        case '3': ExcluirProduto(ref cdProduto, ref nmProduto, ref cdFabricante, ref corProduto); break;
+                        case '4': MenuListagem(cdProduto, nmProduto, cdFabricante, corProduto); break;
+
+                    }
                 }
             }
             while (menu != '5');
