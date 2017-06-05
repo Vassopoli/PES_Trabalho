@@ -10,6 +10,10 @@ namespace Trabalho
     {
         static void Main(string[] args)
         {
+            //-----------------
+            //|Comentário teste|
+            //-----------------
+
             // DECLARANDO VETORES
             string[] nmProduto = new string[999];
             string[] corProduto = new string[999];
