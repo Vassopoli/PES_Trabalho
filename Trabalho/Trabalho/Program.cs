@@ -10,10 +10,6 @@ namespace Trabalho
     {
         static void Main(string[] args)
         {
-            //-----------------
-            //|Comentário teste|
-            //-----------------
-
             // DECLARANDO VETORES
             string[] nmProduto = new string[999];
             string[] corProduto = new string[999];
@@ -42,7 +38,7 @@ namespace Trabalho
             do
             {
                 Console.Clear();
-                Console.Write("O que deseja?\n");
+                Console.Write("O que deseja?\n") ;
                 Console.Write("1. Incluir produto\n");
                 Console.Write("2. Alterar produto\n");
                 Console.Write("3. Excluir produto\n");
@@ -51,7 +47,7 @@ namespace Trabalho
                 Console.Write("Opção desejada: ");
 
                 menu = char.Parse(Console.ReadLine());
-                if (menu > '5' || menu=='0')
+                if (menu > '5' || menu == '0')
                 {
                     Console.WriteLine("Erro! Digite uma opção válida! \nPressione Enter para retornar ao menu...");
                     Console.ReadKey();
@@ -131,7 +127,8 @@ namespace Trabalho
         static void IncluirProduto(ref string[] cdProduto, ref string[] nmProduto, ref string[] cdFabricante, ref string[] corProduto)
         {
             // Declando variáveis	
-            int i = 0;
+            int i = 0, numero;
+
 
             for (i = 0; i <= 999; i++)
             {
@@ -142,18 +139,24 @@ namespace Trabalho
                 }
                 else if (nmProduto[i] == "zzz")
                 {
-                    Console.Write("Para um novo produto digite:\n\n");
+                    Console.Write("Para um novo produto digite:\n");
                     Console.Write("O nome: ");
 
                     nmProduto[i] = Console.ReadLine();
 
                     nmProduto[i] = nmProduto[i].ToUpper();
+                    do
+                    {
+                        Console.Write("O Código do Fabricante no formato 'AAA' ");
 
-                    Console.Write("O Código do Fabricante no formato 'AAA' ");
+                        cdFabricante[i] = Console.ReadLine();
 
-                    cdFabricante[i] = Console.ReadLine();
 
-                    cdFabricante[i] = cdFabricante[i].ToUpper();
+                        cdFabricante[i] = cdFabricante[i].ToUpper();
+                        numero = cdFabricante[i].Length;
+                    }
+                    while (numero != 3 && string.);
+             
 
                     Console.Write("E a cor (Substantivo em masculino no singular Ex.: Preto, Vermelho): ");
 
@@ -303,7 +306,7 @@ namespace Trabalho
                         Console.ReadKey();
                     }
 
-                   
+
                 }
             }
             //Vacilou
@@ -319,7 +322,7 @@ namespace Trabalho
         {
             // FUNÇÃO muda o valor do item buscado "zzz" o excluindo
             string excluido;
-            int i, sn,  cont=0;
+            int i, sn, cont = 0;
             Console.WriteLine("Digite o código do produto que deseja excluir: ");
             excluido = Console.ReadLine();
             excluido = excluido.PadLeft(3, '0');
@@ -331,7 +334,7 @@ namespace Trabalho
                 if (cdProduto[i] == excluido && nmProduto[i] != "zzz")
                 {
                     cont++;
-                    Exibir(cdProduto,nmProduto, cdFabricante, corProduto, i);
+                    Exibir(cdProduto, nmProduto, cdFabricante, corProduto, i);
                     //Chance para o Usuário desistir
                     Console.WriteLine("\n\nConfirma a exclusão? 1.SIM 2.NÃO  ");
                     Console.WriteLine("\nOpção desejada: ");
@@ -355,13 +358,13 @@ namespace Trabalho
 
             }
             //Vacilou
-         
-              if (cont==0)
-            { 
-             Console.WriteLine("Produto não existe. Não esqueça de verificar a lista.");
-             Console.WriteLine("Pressione Enter para retornar ao menu...");
-             Console.ReadKey();
-           }
+
+            if (cont == 0)
+            {
+                Console.WriteLine("Produto não existe. Não esqueça de verificar a lista.");
+                Console.WriteLine("Pressione Enter para retornar ao menu...");
+                Console.ReadKey();
+            }
         }
 
         static void MenuListagem(string[] cdProduto, string[] nmProduto, string[] cdFabricante, string[] corProduto)
@@ -391,7 +394,7 @@ namespace Trabalho
 
         static void ListaNome(string[] cdProduto, string[] nmProduto, string[] cdFabricante, string[] corProduto)
         {
-            string auxCad, nmInicial, nmFinal, espaco;
+            string auxCad, nmInicial, nmFinal;
             int x, y, i, cont;
 
             Console.Write("Qual a letra inicial: ");
@@ -533,6 +536,7 @@ namespace Trabalho
                         // formata o que será exibido conforme o tamanho da palavra do produto
                         cont++;
                         Exibir(cdProduto, nmProduto, cdFabricante, corProduto, i);
+
                     }
                 }
                 //Validação dos dados inseridos do USUÁRIO
@@ -579,7 +583,7 @@ namespace Trabalho
         static void ListaCor(string[] cdProduto, string[] nmProduto, string[] cdFabricante, string[] corProduto)
         {
             string cor;
-            int i, cont=0;
+            int i, cont = 0;
 
             Console.WriteLine("Qual Cor procura? ");
             cor = Console.ReadLine();
@@ -609,10 +613,11 @@ namespace Trabalho
             int totalItens = 0;
 
             ExibirProdutos(cdProduto, nmProduto, cdFabricante, corProduto, ref totalItens);
-            
+
             Console.WriteLine("\nTotal de {0} itens na lista\n", totalItens);
             Console.WriteLine("Pressione Enter para retornar ao menu...");
             Console.ReadKey();
+            //comentario
         }
         static void ExibirProdutos(string[] cdProduto, string[] nmProduto, string[] cdFabricante, string[] corProduto, ref int TotalItens)
         {
@@ -633,6 +638,7 @@ namespace Trabalho
 
                     // Exibe
                     Console.WriteLine("Cód.: {0} | Fabric.: {1} | Prod.: {2}{3} | Cor: {4}\n", cdProduto[i], cdFabricante[i], nmProduto[i], espaco, corProduto[i]);
+
                 }
             }
         }
@@ -649,6 +655,8 @@ namespace Trabalho
 
             // Exibe
             Console.WriteLine("Cód.: {0} | Fabric.: {1} | Prod.: {2}{3} | Cor: {4}\n", cdProduto[i], cdFabricante[i], nmProduto[i], espaco, corProduto[i]);
+
+
         }
         static void ValidacaoSN(ref int sn)
         {
@@ -657,12 +665,16 @@ namespace Trabalho
                 if (sn != 1 && sn != 2)
                 {
                     Console.WriteLine("Digite apenas 1 ou 2.");
-                    
+
                     sn = int.Parse(Console.ReadLine());
                     Console.Clear();
                 }
-            }
-            while (sn != 1 && sn != 2);
+            } while (sn != 1 && sn != 2);
+
+
         }
+
+
     }
 }
+
